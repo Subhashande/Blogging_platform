@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .back{
+            background-image: url('{% static "images/save.jpg" %}');
+            background-size: cover;
+        }
+        .entry{
+            width: 70%;
+            margin-left: 360px;
+        }
+        hr{
+            border-top: 5px solid black;
+        }
+        *{
+            margin: 0px;
+            font-size: Arial;
+            border: border-box;
+        }
+        .first{
+            height: 40px;
+            background-color: #C69774;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .first a{
+            text-decoration: none;
+            color: #124076;
+            font-weight: 900;
+            font-size: 20px;
+        }
+        #hom{
+        }
+        #hom i{
+            font-size: 18px;
+        }
+        #log a{
+            padding-left: 100px;
+        }
+        {% comment %} .last{
+            padding-left: 100px;
+        } {% endcomment %}
+        .border{
+            border: 1.3px solid transparent;
+        }
+        .border:hover{
+            font-size: 30px;
+        }
+        #subh{
+            text-decoration: underline;
+        }
+        #subh:hover{
+            font-size: 15px;
+        }
+    </style>
+    <title>Saved Blogs</title>
+</head>
+<body class="back">
+    <header class="first">
+        <div id="hom">
+        <a class="border" href="{% url 'project'%}"><i class="fa-solid fa-house"></i>Home</a>
+        </div>
+        <div id="log">
+        <a class="border" href="{% url 'blog' %}">New Blog</a>
+        <a id="subh" href="{% url 'profile'%}">{{user.first_name}} <i class="fa-solid fa-user"></i></a>
+        </div>
+        <div>
+            <a class="border" href="{% url 'profile' %}">My Profile</a>
+        </div>
+        <div>
+        <a class="border last" href="{% url 'index'%}">Logout</a>
+        </div>
+    </header>
+    <div class="entry">
+    <h1>Saved Blog Entries</h1>
+    <ul>
+        {% for post in post %}
+            <li>
+                <h2>{{post.title}}</h2>
+                <p><strong>Author:</strong> {{post.author_name }}</p>
+                <p>{{post.content }}</p>
+            </li>
+           <hr>
+        {% empty %}
+            <li>No entries found.</li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>

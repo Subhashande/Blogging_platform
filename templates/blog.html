@@ -1,0 +1,119 @@
+{% load static %}
+<html>
+    <head>
+    <style>
+        *{
+            margin: 0px;
+            font-size: Arial;
+            border: border-box;
+        }
+        body{
+            background-image: url('{% static "images/book.jpg" %}');
+            background-size: cover;
+        }
+        .first{
+            height: 40px;
+            background-color: #C69774;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .first a{
+            text-decoration: none;
+            color: #124076;
+            font-weight: 900;
+            font-size: 20px;
+        }
+        #hom{
+        }
+        #hom i{
+            font-size: 18px;
+        }
+        #log a{
+            padding-left: 100px;
+        }
+        {% comment %} .last{
+            padding-left: 100px;
+        } {% endcomment %}
+        .border{
+            border: 1.3px solid transparent;
+        }
+        {% comment %} .border:hover{
+            font-size: 30px;
+        } {% endcomment %}
+        #subh{
+            text-decoration: underline;
+        }
+        {% comment %} #subh:hover{
+            font-size: 15px;
+        } {% endcomment %}
+        .second{
+            height: 350px;
+            width: 800px;
+            border: 2px solid #f5f5dc;
+            margin-left: 200px;
+            margin-top: 90px;
+            {% comment %} background-color: #DEDBD8; {% endcomment %}
+        }
+        .tit{
+            height: 30px;
+            margin-left: 200px;
+            margin-top: 38px;
+            border: 1.5px solid #e5e5c9;
+            width: 50%;
+            padding-left: 170px;
+        }
+        .con{
+            height: 170px;
+            width: 50%;
+            margin-left: 200px;
+            margin-top: 8px;
+            border: 1.5px solid #fde6d9;
+        }
+        .autho{
+            height: 30px;
+            margin-left: 330px;
+            margin-top: 8px;
+            border: 1.5px solid #e5e5c9;
+        }
+        .pre{
+            height: 30px;
+            margin-top: 10px;
+            margin-left: 400px;
+            width: 60px;
+            background-color: #f5f5dc;
+        }
+    </style>
+    </head>
+    <body>
+        <header class="first">
+            <div id="hom">
+            <a class="border" href="{% url 'project'%}"><i class="fa-solid fa-house"></i>Home</a>
+            </div>
+            <div>
+                <a class="border" href="{% url 'saved' %}">My Blogs</a>
+            </div>
+            <div id="log">
+            <a id="subh" href="{% url 'profile'%}">{{user.first_name}} <i class="fa-solid fa-user"></i></a>
+            </div>
+            <div>
+            <a class="border last" href="{% url 'index'%}">Logout</a>
+            </div>
+        </header>
+        <div class="second">
+            <form action="Blog" method="POST">
+                {% csrf_token %}
+            <div id="one">
+            <input class="tit" type="text" placeholder="Enter the Title" name="title" required/>
+            </div>
+            <div id="two">
+                <input class="con" type="text" placeholder="Enter Your Blog"name="content"/>
+            </div>
+            <div id="three">
+                <input class="autho" type="text" placeholder="Enter the Author_name" name="author_name" required/>
+            </div>
+            <button class="pre" type="submit">Post</a>
+            </form>
+        </div>
+    </body>
+</html>

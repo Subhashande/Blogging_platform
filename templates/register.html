@@ -1,0 +1,77 @@
+{% comment %}
+{% extends "index.html" %}
+{% endcomment %}
+{%load static %}
+<html>
+    <head>
+        <style>
+            .reg{
+                height: 50%;
+                width: 60%;
+                {% comment %} border: 2px solid black; {% endcomment %}
+                margin: 300px 150px 160px 300px;
+                border-radius: 6px;
+            }
+            .named input{
+                height: 30px;
+                width: auto;
+                margin-top: 10px;
+                margin-left: 60px;
+                padding-left: 20px;
+            }
+            .named h2{
+                text-align: center;
+                text-decoration: underline;
+                color: red;
+            }
+            body{
+                background-image: url('{% static "images/blogging.jpg" %}');
+                background-size: cover;
+            }
+            .work{
+                height: 30px;
+                width: auto;
+                margin-top: 10px;
+                margin-left: 60px;
+                padding-left: 20px;
+            }
+            .sub{
+                height: 30px;
+                width: 90px;
+                margin-top: 10px;
+                margin-left: 260px;
+                background-color: ;
+            }
+            #se{
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <form class="reg" action="register" method="POST">
+            {% csrf_token %}
+        <div class="named">
+            <h2>Welcome to Blogging</h2>
+            <input type="text" placeholder="Enter your User name" name="username" required><br>
+        <input type="text" placeholder="Enter your First name" name="first_name" required>
+        <input type="text" placeholder="Enter your Last name" name="last_name" required>
+        </div>
+        <br>
+        <input class="work" type="email" placeholder="Enter your E-mail" name="email" required>
+        <br>
+        <input class="work" type="Password" placeholder="Enter your Password" name="password1" required>
+        <input class="work" type="Password" placeholder="Re-Enter your Password" name="password2" required>
+        {% comment %} <br><br>
+        <label class="work">Gender:</label>
+        <select name="cars" id="cars">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Others">Others</option>
+        </select> {% endcomment %}
+  <div class="work">
+    <p>Already have an account?<a id="se" href="{% url 'login' %}">Login</a></p>
+  </div>
+  <input class="sub" type="submit" value="Submit">
+    </form>
+    </body>
+</html>

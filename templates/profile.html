@@ -1,0 +1,106 @@
+{% load static %}
+<html>
+    <head>
+        <style>
+            *{
+                width: 100%;
+                font-size: Arial;
+                border: border-box;
+                margin: 0px;
+            }
+            .pro_img{
+                margin-left: 100px;
+                margin-top: 20px;
+                border: 1px solid;
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                background-image: url('{% static "images/default.jpg" %}');
+                background-size: cover;
+            }
+            .whole{
+                display: flex;
+            }
+            .media-body{
+                margin-left: 30px;
+                margin-top: 40px;
+            }
+            #info{
+                margin-left: 80px;
+            }
+            .first{
+                height: 40px;
+                background-color: #C69774;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .first a{
+                text-decoration: none;
+                color: #124076;
+                font-weight: 900;
+                font-size: 20px;
+            }
+            #hom{
+            }
+            #hom i{
+                font-size: 18px;
+            }
+            #log a{
+                padding-left: 100px;
+            }
+            {% comment %} .last{
+                padding-left: 100px;
+            } {% endcomment %}
+            .border{
+                border: 1.3px solid transparent;
+            }
+            {% comment %} .border:hover{
+                font-size: 30px;
+            } {% endcomment %}
+            #subh{
+                text-decoration: underline;
+            }
+            {% comment %} #subh:hover{
+                font-size: 15px;
+            } {% endcomment %}
+            .last{
+                margin-left: 120px;
+            }
+            #final{
+                background-color: #eeeeee;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="first">
+            <div id="hom">
+            <a class="border" href="{% url 'project'%}"><i class="fa-solid fa-house"></i>Home</a>
+            </div>
+            <div>
+                <a class="border" href="{% url 'saved' %}">My Blogs</a>
+            </div>
+            <div id="log">
+            <a class="border" href="{% url 'blog' %}">New Blog</a>
+            <a id="subh" href="{% url 'profile'%}">{{user.first_name}} <i class="fa-solid fa-user"></i></a>
+            </div>
+            <div>
+            <a class="border last" href="{% url 'index'%}">Logout</a>
+            </div>
+        </header>
+    <div id="final">
+        <div class="whole">
+            <div class="pro_img">
+            </div>
+            <div class="media-body">
+                <h2 class="account-heading"><b>Username:</b> {{ user.username }}</h2>
+                <p class="text-secondary"><b>E-mail:</b> {{ user.email }}</p>
+                <p><b>First Name:</b> {{user.first_name}}</p>
+              </div>
+        </div>
+        <h2 id="info">Profile Info</h2>
+    </div>
+    </body>
+    </html>
+    

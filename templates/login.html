@@ -1,0 +1,64 @@
+{% comment %}
+{% extends "index.html" %}
+{% endcomment %}
+{% load static %}
+<html>
+    <head>
+        <style>
+            .reg{
+                height: 50%;
+                width: 60%;
+                margin: 300px 150px 160px 250px;
+            }
+            .named input{
+                height: 30px;
+                width: auto;
+                margin-top: 10px;
+                margin-left: 300px;
+                padding-left: 20px;
+            }
+            .named h2{
+                text-align: center;
+                text-decoration: underline;
+                color: red;
+            }
+            body{
+                background-image: url('{% static "images/blogging.jpg" %}');
+                background-size: cover;
+            }
+            .work{
+                height: 30px;
+                width: auto;
+                margin-top: 10px;
+                margin-left: 270px;
+                padding-left: 20px;
+            }
+            .sub{
+                height: 30px;
+                width: 90px;
+                margin-top: 10px;
+                margin-left: 350px;
+                background-color: blue;
+            }
+            #se{
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <form class="reg" method="POST">
+            {% csrf_token %}
+        <div class="named">
+            <h2>Welcome to Blogging</h2>
+        <input type="text" placeholder="Enter the Username" name="username" required>
+        <br>
+        <input type="password" placeholder="Enter the Password" name="password" required>
+        </div>
+        <br>
+  <div class="work">
+    <p>Don't have an account?<a id="se" href="{% url 'register' %}">Register</a></p>
+  </div>
+  <input class="sub" type="submit" value="Login">
+    </form>
+    </body>
+</html>
